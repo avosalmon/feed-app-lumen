@@ -93,7 +93,7 @@ class BlogScrapeCommand extends Command {
     protected function getOptions()
     {
         return [
-            ['debug', null, InputOption::VALUE_OPTIONAL, 'Output retrieved data into console.', false],
+            ['debug', null, InputOption::VALUE_NONE, 'Display retrieved entry info in the console.'],
             ['count', null, InputOption::VALUE_OPTIONAL, 'Count for which blog entries are retrieved.', 1]
         ];
     }
