@@ -1,0 +1,16 @@
+{
+    "name": "avosalmon-feed-app-lumen",
+    "description": "SNS Feed API",
+    "version": "0.1.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Ryuta Hamasaki",
+    "devDependencies": {
+        "gulp": "3.8.9",
+        "gulp-exec": "2.1.1",
+        "gulp-watch": "1.1.0",
+        "gulp-phpunit": "0.7.0"
+    }
+}

@@ -1,6 +1,6 @@
 {
     "name": "avosalmon/feed-app-lumen",
-    "description": "SNS Feed API.",
+    "description": "SNS Feed API",
     "keywords": [],
     "license": "MIT",
     "type": "project",
