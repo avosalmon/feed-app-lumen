@@ -14,3 +14,6 @@
 $app->get('/', function() use ($app) {
     return $app->welcome();
 });
+
+$app->get('/instagram', ['as' => 'instagram.store', 'uses' => 'App\Http\Controllers\InstagramController@store']);
+$app->get('/twitter',   ['as' => 'twitter.store',   'uses' => 'App\Http\Controllers\TwitterController@store']);
