@@ -1,2 +1,14 @@
-/vendor
+vendor/.git
+vendor/**/composer.lock
+/storage/app
+/storage/logs
+/lumen.log
 .env
+/node_modules
+/ruby_vendor
+/.bundle
+composer.phar
+.DS_Store
+Thumbs.db
+.tmp
+npm-debug.log
