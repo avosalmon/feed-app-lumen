@@ -57,10 +57,11 @@ class BlogScrapeCommand extends Command {
      */
     public function handle()
     {
-        $debug = $this->option('debug');
-        $count = $this->option('count');
+        $debug  = $this->option('debug');
+        $offset = $this->option('offset');
+        $limit  = $this->option('limit');
 
-        $entries = $this->scraper->getEntries($count);
+        $entries = $this->scraper->getEntries($offset, $limit);
         foreach ($entries as $id => $entry) {
             if ($debug) $this->logToConsole($id, $entry);
             $this->blog->create($id, $entry);
@@ -93,8 +94,9 @@ class BlogScrapeCommand extends Command {
     protected function getOptions()
     {
         return [
-            ['debug', null, InputOption::VALUE_NONE, 'Display retrieved entry info in the console.'],
-            ['count', null, InputOption::VALUE_OPTIONAL, 'Count for which blog entries are retrieved.', 1]
+            ['debug',  null, InputOption::VALUE_NONE,     'Display retrieved entry info in the console.'],
+            ['offset', null, InputOption::VALUE_OPTIONAL, 'Offset for which blog entries are retrieved.', 0],
+            ['limit',  null, InputOption::VALUE_OPTIONAL, 'Limit for which blog entries are retrieved.', 1]
         ];
     }
 

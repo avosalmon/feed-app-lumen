@@ -34,15 +34,16 @@ class BlogScraper
     /**
      * Scrape blog entries. Gets 20 entries by default.
      *
-     * @param  int $count
+     * @param  int $offset
+     * @param  int $limit
      * @return array
      */
-    public function getEntries($count = 1)
+    public function getEntries($offset = 0, $limit = 1)
     {
         $entries = [];
 
-        for ($i=0; $i < $count; $i++) {
-            @$this->dom->loadHTMLFile($this->baseUrl . ($i+1));
+        for ($i=1; $i < $limit+1; $i++) {
+            @$this->dom->loadHTMLFile($this->baseUrl . ($offset+$i));
             $xpath = new DOMXPath($this->dom);
 
             // retrieve DOM
