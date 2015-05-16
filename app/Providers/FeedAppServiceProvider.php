@@ -57,8 +57,7 @@ class FeedAppServiceProvider extends ServiceProvider
     protected function registerInterfaces()
     {
         $this->app->bind('App\Avosalmon\Store\Blog\BlogRepositoryInterface', function () {
-            $firebaseUrl = 'https://brilliant-heat-3361.firebaseio.com/';
-            return new BlogFirebaseRepository(new FirebaseLib($firebaseUrl));
+            return new BlogFirebaseRepository(new FirebaseLib(env('FIREBASE_URL')));
         });
     }
 
