@@ -1,0 +1,9 @@
+/vendor
+/node_modules
+/ruby_vendor
+/.bundle
+composer.phar
+.DS_Store
+Thumbs.db
+.tmp
+npm-debug.log

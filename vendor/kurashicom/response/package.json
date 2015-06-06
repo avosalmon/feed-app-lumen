@@ -1,0 +1,17 @@
+{
+    "name": "kurashicom-response",
+    "description": "Response module for our in-house platform",
+    "version": "0.3.0",
+    "repository": "https://github.com/kurashicom-laravel-modules/response",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Kurashicom Inc.",
+    "devDependencies": {
+        "gulp": "3.8.9",
+        "gulp-exec": "2.1.1",
+        "gulp-watch": "1.1.0",
+        "gulp-phpunit": "0.7.0"
+    }
+}
