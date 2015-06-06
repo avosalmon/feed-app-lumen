@@ -80,6 +80,8 @@ $app->singleton(
 
 $app->register('App\Providers\FeedAppServiceProvider');
 
+$app->register('Kurashicom\Response\ResponseServiceProvider');
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

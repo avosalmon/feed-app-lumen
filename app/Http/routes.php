@@ -15,5 +15,22 @@ $app->get('/', function() use ($app) {
     return $app->welcome();
 });
 
-$app->get('/instagram', ['as' => 'instagram.store', 'uses' => 'App\Http\Controllers\InstagramController@store']);
-$app->get('/twitter',   ['as' => 'twitter.store',   'uses' => 'App\Http\Controllers\TwitterController@store']);
+$app->group(['prefix' => 'blog'], function($app)
+{
+    $app->get('/',     ['as' => 'blog.index', 'uses' => 'App\Http\Controllers\BlogController@index']);
+    $app->get('/{id}', ['as' => 'blog.show',  'uses' => 'App\Http\Controllers\BlogController@show']);
+});
+
+$app->group(['prefix' => 'instagram'], function($app)
+{
+    $app->get('/',     ['as' => 'instagram.index', 'uses' => 'App\Http\Controllers\InstagramController@index']);
+    $app->post('/',    ['as' => 'instagram.store', 'uses' => 'App\Http\Controllers\InstagramController@store']);
+    $app->get('/{id}', ['as' => 'instagram.show',  'uses' => 'App\Http\Controllers\InstagramController@show']);
+});
+
+$app->group(['prefix' => 'twitter'], function($app)
+{
+    $app->get('/',     ['as' => 'twitter.index', 'uses' => 'App\Http\Controllers\TwitterController@index']);
+    $app->post('/',    ['as' => 'twitter.store', 'uses' => 'App\Http\Controllers\TwitterController@store']);
+    $app->get('/{id}', ['as' => 'twitter.show',  'uses' => 'App\Http\Controllers\TwitterController@show']);
+});

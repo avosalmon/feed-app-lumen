@@ -62,9 +62,9 @@ class BlogScrapeCommand extends Command {
         $limit  = $this->option('limit');
 
         $entries = $this->scraper->getEntries($offset, $limit);
-        foreach ($entries as $id => $entry) {
-            if ($debug) $this->logToConsole($id, $entry);
-            $this->blog->create($id, $entry);
+        foreach ($entries as $entry) {
+            if ($debug) $this->logToConsole($entry);
+            $this->blog->create($entry);
         }
     }
 
@@ -75,14 +75,14 @@ class BlogScrapeCommand extends Command {
      * @param  array $entry
      * @return void
      */
-    protected function logToConsole($id, $entry)
+    protected function logToConsole($entry)
     {
-        $this->info('============ ' . $id . ' ============');
-        $this->info('title: '      . $entry['title']);
-        $this->info('entry_url: '  . $entry['entry_url']);
-        $this->info('entry_date: ' . $entry['entry_date']);
-        $this->info('tag: '        . $entry['tag']);
-        $this->info('image_url: '  . $entry['image_url']);
+        $this->info('============ ' . $entry['entry_id'] . ' ============');
+        $this->info('title: '       . $entry['title']);
+        $this->info('entry_url: '   . $entry['entry_url']);
+        $this->info('entry_date: '  . $entry['entry_date']);
+        $this->info('tag: '         . $entry['tag']);
+        $this->info('image_url: '   . $entry['image_url']);
         $this->info('');
     }
 

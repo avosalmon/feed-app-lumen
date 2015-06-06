@@ -50,15 +50,16 @@ class BlogScraper
             foreach ($xpath->query('//div[@class="entry main_cntr_cntnt_inner"]') as $entryNode) {
                 $url = $xpath->evaluate('string(.//h3/a/@href)', $entryNode);
                 $id  = trim($url, 'http://hokuohkurashi.com/note/');
-                $entry_data = [
-                    'title'      => $xpath->evaluate('string(.//h3/a)', $entryNode),
+                $entry = [
+                    'entry_id'   => $id,
                     'entry_url'  => $xpath->evaluate('string(.//h3/a/@href)', $entryNode),
                     'entry_date' => $xpath->evaluate('string(.//p[@class="date small"])', $entryNode),
+                    'title'      => $xpath->evaluate('string(.//h3/a)', $entryNode),
                     'tag'        => $xpath->evaluate('string(.//span[@class="tag"])', $entryNode),
                     'image_url'  => $xpath->evaluate('string(.//img/@src)', $entryNode)
                 ];
 
-                $entries[$id] = $entry_data;
+                array_push($entries, $entry);
             }
         }
 

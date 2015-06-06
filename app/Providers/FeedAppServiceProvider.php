@@ -1,10 +1,9 @@
 <?php namespace App\Providers;
 
 use DOMDocument;
-use Firebase\FirebaseLib;
 use Illuminate\Support\ServiceProvider;
 use App\Avosalmon\Scraper\BlogScraper;
-use App\Avosalmon\Store\Blog\BlogFirebaseRepository;
+use App\Avosalmon\Store\Blog\BlogRethinkdbRepository;
 
 class FeedAppServiceProvider extends ServiceProvider
 {
@@ -57,7 +56,7 @@ class FeedAppServiceProvider extends ServiceProvider
     protected function registerInterfaces()
     {
         $this->app->bind('App\Avosalmon\Store\Blog\BlogRepositoryInterface', function () {
-            return new BlogFirebaseRepository(new FirebaseLib(env('FIREBASE_URL')));
+            return new BlogRethinkdbRepository(env('DB_HOST'), env('DB_PORT'), env('DB_DATABASE'));
         });
     }
 
