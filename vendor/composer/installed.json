@@ -3507,17 +3507,17 @@
     },
     {
         "name": "kurashicom/response",
-        "version": "0.3.0",
-        "version_normalized": "0.3.0.0",
+        "version": "dev-integration",
+        "version_normalized": "dev-integration",
         "source": {
             "type": "git",
-            "url": "git@github.com:kurashicom-laravel-modules/response.git",
-            "reference": "9df9a15a72369638dbc1e2767215af30eb95b2be"
+            "url": "git@github.com:avosalmon/response.git",
+            "reference": "5479af8d103ec02c16f70ded4d1af4105f85d962"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kurashicom-laravel-modules/response/zipball/9df9a15a72369638dbc1e2767215af30eb95b2be",
-            "reference": "9df9a15a72369638dbc1e2767215af30eb95b2be",
+            "url": "https://api.github.com/repos/avosalmon/response/zipball/5479af8d103ec02c16f70ded4d1af4105f85d962",
+            "reference": "5479af8d103ec02c16f70ded4d1af4105f85d962",
             "shasum": ""
         },
         "require": {
@@ -3525,10 +3525,12 @@
             "php": ">=5.4.0"
         },
         "require-dev": {
+            "fabpot/php-cs-fixer": "dev-master",
             "mockery/mockery": "0.9.3",
-            "phpunit/phpunit": "4.4.2"
+            "phpunit/phpunit": "4.4.2",
+            "satooshi/php-coveralls": "dev-master"
         },
-        "time": "2015-04-23 02:42:51",
+        "time": "2015-06-06 23:15:21",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3543,8 +3545,7 @@
             }
         ],
         "support": {
-            "source": "https://github.com/kurashicom-laravel-modules/response/tree/0.3.0",
-            "issues": "https://github.com/kurashicom-laravel-modules/response/issues"
+            "source": "https://github.com/avosalmon/response/tree/integration"
         }
     }
 ]

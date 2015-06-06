@@ -12,6 +12,8 @@
         "gulp": "3.8.9",
         "gulp-exec": "2.1.1",
         "gulp-watch": "1.1.0",
-        "gulp-phpunit": "0.7.0"
+        "gulp-phpunit": "0.7.0",
+        "shelljs":      "0.3.0",
+        "yargs":        "1.3.3"
     }
 }

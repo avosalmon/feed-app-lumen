@@ -7,7 +7,7 @@
     "require": {
         "laravel/lumen-framework": "5.0.*",
         "vlucas/phpdotenv": "~1.0",
-        "kurashicom/response": "0.3.0",
+        "kurashicom/response": "dev-integration",
         "danielmewes/php-rql": "dev-master",
         "ktamas77/firebase-php": "dev-master"
     },
@@ -18,7 +18,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:kurashicom-laravel-modules/response.git"
+            "url": "git@github.com:avosalmon/response.git"
         }
     ],
     "autoload": {

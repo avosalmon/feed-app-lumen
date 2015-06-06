@@ -1,6 +1,13 @@
 machine:
   php:
     version: 5.5.9
+dependencies:
+  override:
+    - mkdir -p build/logs
+    - composer install --dev --no-interaction
+    - cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini | sed -e "s/;//" > xdebug.ini
+    - mv xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
 test:
   override:
     - php vendor/phpunit/phpunit/phpunit -c .
+    - php vendor/bin/coveralls

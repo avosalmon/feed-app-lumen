@@ -1,9 +1,12 @@
 /vendor
 /node_modules
 /ruby_vendor
+/build
 /.bundle
 composer.phar
 .DS_Store
 Thumbs.db
 .tmp
 npm-debug.log
+.php_cs.cache
+tmp*

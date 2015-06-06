@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f6fd6dc2d0c00d0ec8f17dff73b13fb2",
+    "hash": "02db07865d874ee73d5465679784add1",
     "packages": [
         {
             "name": "danielmewes/php-rql",
@@ -1311,16 +1311,16 @@
         },
         {
             "name": "kurashicom/response",
-            "version": "0.3.0",
+            "version": "dev-integration",
             "source": {
                 "type": "git",
-                "url": "git@github.com:kurashicom-laravel-modules/response.git",
-                "reference": "9df9a15a72369638dbc1e2767215af30eb95b2be"
+                "url": "git@github.com:avosalmon/response.git",
+                "reference": "5479af8d103ec02c16f70ded4d1af4105f85d962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kurashicom-laravel-modules/response/zipball/9df9a15a72369638dbc1e2767215af30eb95b2be",
-                "reference": "9df9a15a72369638dbc1e2767215af30eb95b2be",
+                "url": "https://api.github.com/repos/avosalmon/response/zipball/5479af8d103ec02c16f70ded4d1af4105f85d962",
+                "reference": "5479af8d103ec02c16f70ded4d1af4105f85d962",
                 "shasum": ""
             },
             "require": {
@@ -1328,8 +1328,10 @@
                 "php": ">=5.4.0"
             },
             "require-dev": {
+                "fabpot/php-cs-fixer": "dev-master",
                 "mockery/mockery": "0.9.3",
-                "phpunit/phpunit": "4.4.2"
+                "phpunit/phpunit": "4.4.2",
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -1344,10 +1346,9 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/kurashicom-laravel-modules/response/tree/0.3.0",
-                "issues": "https://github.com/kurashicom-laravel-modules/response/issues"
+                "source": "https://github.com/avosalmon/response/tree/integration"
             },
-            "time": "2015-04-23 02:42:51"
+            "time": "2015-06-06 23:15:21"
         },
         {
             "name": "laravel/lumen-framework",
@@ -3430,6 +3431,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "kurashicom/response": 20,
         "danielmewes/php-rql": 20,
         "ktamas77/firebase-php": 20
     },
