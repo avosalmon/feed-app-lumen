@@ -12,4 +12,5 @@ return array(
     $vendorDir . '/ircmaxell/password-compat/lib/password.php',
     $vendorDir . '/nikic/fast-route/src/functions.php',
     $vendorDir . '/laravel/lumen-framework/src/helpers.php',
+    $vendorDir . '/danielmewes/php-rql/src/rdb/rdb.php',
 );

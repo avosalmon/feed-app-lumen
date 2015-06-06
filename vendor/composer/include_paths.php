@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     $vendorDir . '/phpunit/php-text-template',
     $vendorDir . '/phpunit/php-timer',
+    $vendorDir . '/danielmewes/php-rql/src',
 );

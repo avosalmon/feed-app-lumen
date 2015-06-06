@@ -7,6 +7,7 @@
     "require": {
         "laravel/lumen-framework": "5.0.*",
         "vlucas/phpdotenv": "~1.0",
+        "danielmewes/php-rql": "dev-master",
         "ktamas77/firebase-php": "dev-master"
     },
     "require-dev": {
