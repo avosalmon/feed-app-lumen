@@ -87,9 +87,9 @@ class BlogRethinkdbRepository implements BlogRepositoryInterface
         $this->connect();
 
         if ($count) {
-            $result = r\table($this->table)->skip($offset)->limit($limit)->count()->run($this->conn);
+            $result = r\table($this->table)->count()->run($this->conn);
         } else {
-            $result = r\table($this->table)->orderBy(['index' => r\desc('entry_id')])->skip($offset)->limit($limit)->run($this->conn)->toArray();
+            $result = r\table($this->table)->orderBy(['index' => r\desc('entry_date')])->skip($offset)->limit($limit)->run($this->conn)->toArray();
         }
 
         $this->close();
