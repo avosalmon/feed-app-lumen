@@ -8,7 +8,7 @@ interface BlogRepositoryInterface
      * @param  int $offset
      * @param  int $limit
      * @param  bool $count
-     * @return mixed
+     * @return int|array
      */
     public function all($offset = 0, $limit = 10, $count = false);
 
@@ -16,7 +16,7 @@ interface BlogRepositoryInterface
      * Get single blog entry by id
      *
      * @param  int $id
-     * @return mixed
+     * @return array
      */
     public function find($id);
 
@@ -24,7 +24,7 @@ interface BlogRepositoryInterface
      * Create a new blog entry.
      *
      * @param  array $data
-     * @return void
+     * @return r\Cursor
      */
     public function create($data);
 

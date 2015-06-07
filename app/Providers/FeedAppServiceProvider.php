@@ -3,6 +3,7 @@
 use DOMDocument;
 use Illuminate\Support\ServiceProvider;
 use App\Avosalmon\Scraper\BlogScraper;
+use App\Avosalmon\Store\Connection;
 use App\Avosalmon\Store\Blog\BlogRethinkdbRepository;
 
 class FeedAppServiceProvider extends ServiceProvider
@@ -46,6 +47,10 @@ class FeedAppServiceProvider extends ServiceProvider
         $this->app->bind('App\Avosalmon\Scraper\BlogScraper', function () {
             return new BlogScraper(new DOMDocument);
         });
+
+        $this->app->bind('App\Avosalmon\Store\Connection', function () {
+            return new Connection(env('DB_HOST'), env('DB_PORT'), env('DB_DATABASE'));
+        });
     }
 
     /**
@@ -56,7 +61,9 @@ class FeedAppServiceProvider extends ServiceProvider
     protected function registerInterfaces()
     {
         $this->app->bind('App\Avosalmon\Store\Blog\BlogRepositoryInterface', function () {
-            return new BlogRethinkdbRepository(env('DB_HOST'), env('DB_PORT'), env('DB_DATABASE'));
+            return new BlogRethinkdbRepository(
+                $this->app->make('App\Avosalmon\Store\Connection')
+            );
         });
     }
 
@@ -69,6 +76,7 @@ class FeedAppServiceProvider extends ServiceProvider
     {
         return [
             'App\Avosalmon\Scraper\BlogScraper',
+            'App\Avosalmon\Store\Connection',
             'App\Avosalmon\Store\Blog\BlogRepositoryInterface'
         ];
     }

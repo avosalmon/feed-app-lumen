@@ -1,37 +1,17 @@
 <?php namespace App\Avosalmon\Store\Blog;
 
 use r;
+use App\Avosalmon\Store\Connection;
 
 class BlogRethinkdbRepository implements BlogRepositoryInterface
 {
 
     /**
-     * RethinkDB connection.
+     * Variable to hold the instance of the injected dependency.
      *
-     * @var
+     * @var App\Avosalmon\Store\Connection
      */
     protected $conn;
-
-    /**
-     * Database host.
-     *
-     * @var string
-     */
-    protected $host;
-
-    /**
-     * Database port.
-     *
-     * @var integer
-     */
-    protected $port;
-
-    /**
-     * Database name.
-     *
-     * @var string
-     */
-    protected $database;
 
     /**
      * Table name.
@@ -43,35 +23,22 @@ class BlogRethinkdbRepository implements BlogRepositoryInterface
     /**
      * Create a new instance.
      *
-     * @param string  $host
-     * @param integer $port
-     * @param string  $database
+     * @param  App\Avosalmon\Store\Connection
+     * @return void
      */
-    public function __construct($host, $port, $database)
+    public function __construct(Connection $conn)
     {
-        $this->host     = $host;
-        $this->port     = $port;
-        $this->database = $database;
+        $this->conn = $conn;
     }
 
     /**
-     * Create a db connection.
+     * Get RethinkDB connection.
      *
-     * @return void
+     * @return r\Connection
      */
-    protected function connect()
+    protected function getConnection()
     {
-        $this->conn = r\connect($this->host, $this->port, $this->database);
-    }
-
-    /**
-     * Close a db connection.
-     *
-     * @return void
-     */
-    protected function close()
-    {
-        $this->conn->close();
+        return $this->conn->getConnection();
     }
 
     /**
@@ -80,52 +47,35 @@ class BlogRethinkdbRepository implements BlogRepositoryInterface
      * @param  int $offset
      * @param  int $limit
      * @param  bool $count
-     * @return mixed
+     * @return int|array
      */
     public function all($offset = 0, $limit = 20, $count = false)
     {
-        $this->connect();
+        if ($count) return r\table($this->table)->count()->run($this->getConnection());
 
-        if ($count) {
-            $result = r\table($this->table)->count()->run($this->conn);
-        } else {
-            $result = r\table($this->table)->orderBy(['index' => r\desc('entry_date')])->skip($offset)->limit($limit)->run($this->conn)->toArray();
-        }
-
-        $this->close();
-
-        return $result;
+        return r\table($this->table)->orderBy(['index' => r\desc('entry_date')])->skip($offset)->limit($limit)->run($this->getConnection())->toArray();
     }
 
     /**
      * Get single blog entry by id
      *
      * @param  int $id
-     * @return mixed
+     * @return array
      */
     public function find($id)
     {
-        $this->connect();
-
-        $result = r\table($this->table)->filter(['entry_id' => $id])->run($this->conn)->toArray();
-
-        $this->close();
-
-        return $result;
+        return r\table($this->table)->filter(['entry_id' => $id])->run($this->getConnection())->toArray();
     }
 
     /**
      * Create a new blog entry.
      *
      * @param  array $data
-     * @return void
+     * @return r\Cursor
      */
     public function create($data)
     {
-        $this->connect();
-
-        r\table($this->table)->insert($data)->run($this->conn);
-
-        $this->close();
+        return r\table($this->table)->insert($data)->run($this->getConnection());
     }
+
 }

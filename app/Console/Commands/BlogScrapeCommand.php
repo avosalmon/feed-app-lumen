@@ -71,7 +71,6 @@ class BlogScrapeCommand extends Command {
     /**
      * Display blog entry info to the console.
      *
-     * @param  int $id
      * @param  array $entry
      * @return void
      */
